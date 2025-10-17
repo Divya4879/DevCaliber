@@ -154,7 +154,22 @@ You've reached your chat limit. Please try again in ${timeUntilReset}.
     });
 
     if (!response.ok) {
-      throw new Error('OpenRouter API failed');
+      // Fallback to Gemini API if OpenRouter fails (rate limit, etc.)
+      console.log('OpenRouter failed, falling back to Gemini API');
+      const { GoogleGenerativeAI } = await import('@google/generative-ai');
+      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+      
+      const prompt = `${systemPrompt}\n\nContext: ${contextData}\n\nConversation:\n${messages.map(m => `${m.role}: ${m.content}`).join('\n')}`;
+      const result = await model.generateContent(prompt);
+      const geminiResponse = await result.response;
+      const aiResponse = geminiResponse.text();
+      
+      // Process messaging commands for Gemini response too
+      processMessagingCommands(messages[messages.length - 1]?.content || '', context.userEmail, aiResponse);
+      
+      TokenVault.recordChatUsage(context.userEmail, context.userRole);
+      return aiResponse;
     }
 
     const data = await response.json();
