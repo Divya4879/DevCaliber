@@ -1,0 +1,5 @@
+{
+  "name": "DevCaliber",
+  "description": "An AI platform that analyzes GitHub profiles to generate verified skill credentials for developers, helping recruiters discover top-tier, authenticated talent.",
+  "requestFramePermissions": []
+}
