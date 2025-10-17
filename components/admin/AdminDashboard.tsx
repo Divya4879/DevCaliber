@@ -4,13 +4,18 @@ import { CandidateProfile } from '../../types';
 import CandidateProfileDetail from './CandidateProfileDetail';
 import MessagesPage from '../messages/MessagesPage';
 import RecruiterRequestsTable from './RecruiterRequestsTable';
+import ChatBubble from '../chat/ChatBubble';
 import { MessagingService } from '../../services/messagingService';
 import { RecruiterRequestService } from '../../services/recruiterRequestService';
 import { useAuth } from '../../hooks/useAuth';
 
 type Tab = 'candidates' | 'recruiters' | 'recruiter-requests' | 'messages';
 
-const AdminDashboard: React.FC = () => {
+interface AdminDashboardProps {
+  onNavigateToChat?: () => void;
+}
+
+const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateToChat }) => {
   const { user } = useAuth();
   const [candidates] = useState<CandidateProfile[]>(mockCandidates);
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateProfile | null>(null);
@@ -167,6 +172,9 @@ const AdminDashboard: React.FC = () => {
             <MessagesPage />
         )}
       </div>
+      
+      {/* Chat Bubble */}
+      {onNavigateToChat && <ChatBubble onClick={onNavigateToChat} />}
     </div>
   );
 };

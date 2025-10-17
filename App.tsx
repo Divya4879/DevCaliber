@@ -83,9 +83,9 @@ const App: React.FC = () => {
       case UserRole.CANDIDATE:
         return <CandidateDashboard />;
       case UserRole.RECRUITER:
-        return <RecruiterDashboard />;
+        return <RecruiterDashboard onNavigateToChat={() => setCurrentPage('chat')} />;
       case UserRole.ADMIN:
-        return <AdminDashboard />;
+        return <AdminDashboard onNavigateToChat={() => setCurrentPage('chat')} />;
       default:
         return <RoleSelection />;
     }

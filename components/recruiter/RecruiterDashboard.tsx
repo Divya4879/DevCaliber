@@ -3,10 +3,15 @@ import { mockCandidates } from '../../data/mockData';
 import { CandidateProfile } from '../../types';
 import CandidateProfileDetail from '../admin/CandidateProfileDetail'; // Reusing this component
 import MessagesPage from '../messages/MessagesPage';
+import ChatBubble from '../chat/ChatBubble';
 import { MessagingService } from '../../services/messagingService';
 import { useAuth } from '../../hooks/useAuth';
 
-const RecruiterDashboard: React.FC = () => {
+interface RecruiterDashboardProps {
+  onNavigateToChat?: () => void;
+}
+
+const RecruiterDashboard: React.FC<RecruiterDashboardProps> = ({ onNavigateToChat }) => {
   const { user } = useAuth();
   const [candidates] = useState<CandidateProfile[]>(mockCandidates);
   const [selectedCandidate, setSelectedCandidate] = useState<CandidateProfile | null>(null);
@@ -107,6 +112,9 @@ const RecruiterDashboard: React.FC = () => {
         </div>
       </div>
       )}
+      
+      {/* Chat Bubble */}
+      {onNavigateToChat && <ChatBubble onClick={onNavigateToChat} />}
     </div>
   );
 };
