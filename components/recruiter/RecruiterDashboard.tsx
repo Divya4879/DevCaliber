@@ -75,7 +75,14 @@ const RecruiterDashboard: React.FC<RecruiterDashboardProps> = ({ onNavigateToCha
                                 <p className="text-cyan-400 text-sm">{candidate.experience} experience</p>
                             </div>
                         </div>
-                        <p className="text-sm text-gray-300 mb-4 italic">"{candidate.githubAnalysis?.summary?.substring(0, 120) || 'Experienced developer with strong technical skills'}..."</p>
+                        <div 
+                            className="text-sm text-gray-300 mb-4 leading-relaxed"
+                            dangerouslySetInnerHTML={{
+                                __html: `"${(candidate.githubAnalysis?.summary || 'Experienced developer with strong technical skills')
+                                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                    .substring(0, 150)}..."`
+                            }}
+                        />
                         <div className="flex flex-wrap gap-2 mb-4">
                             {candidate.skills.slice(0, 4).map((skill, index) => (
                                 <span key={skill} className={`text-xs font-medium px-2 py-1 rounded-full ${
