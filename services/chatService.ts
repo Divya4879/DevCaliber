@@ -185,8 +185,16 @@ function processMessagingCommands(userMessage: string, senderEmail: string, aiRe
 
     console.log('Processing message:', { recipientName, messageContent, senderEmail });
 
-    // Find recipient email by name - check both candidates and recruiters
-    const allUsers = [...mockCandidates, ...mockRecruiters];
+    // Demo users mapping (excluding admin - no one sends messages to admin)
+    const demoUsers = [
+      { name: 'Demo Candidate', email: 'candidate@testcredential.com' },
+      { name: 'Demo Recruiter', email: 'recruiter@testcredential.com' },
+      { name: 'Welcome Miss/Mr Candidate', email: 'candidate@testcredential.com' },
+      { name: 'Welcome Miss/Mr Recruiter', email: 'recruiter@testcredential.com' }
+    ];
+
+    // Find recipient email by name - check demo users first, then candidates and recruiters
+    const allUsers = [...demoUsers, ...mockCandidates, ...mockRecruiters];
     const recipient = allUsers.find(user =>
       user.name.toLowerCase().includes(recipientName.toLowerCase()) ||
       recipientName.toLowerCase().includes(user.name.toLowerCase()) ||
