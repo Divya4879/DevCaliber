@@ -378,7 +378,10 @@ const CandidateDashboard: React.FC = () => {
 
       {(analysis || showDemoContent) && (
         <div id="profile-content" className="space-y-6">
-          <AnalysisDisplay analysis={analysis || mockAnalysis} />
+          <AnalysisDisplay 
+            analysis={analysis || mockAnalysis} 
+            githubUsername={connectedGithubUsername || githubUsername || user?.githubUsername}
+          />
           
           {analysis && (
             <div className="bg-slate-800/50 rounded-lg p-6 border border-cyan-800/30">

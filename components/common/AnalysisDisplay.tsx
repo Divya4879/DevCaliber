@@ -3,6 +3,7 @@ import { GithubAnalysis } from '../../types';
 
 interface AnalysisDisplayProps {
   analysis: GithubAnalysis | null;
+  githubUsername?: string;
 }
 
 // Format text with **bold** and line breaks
@@ -63,7 +64,7 @@ const RatingCircle: React.FC<{ rating: number }> = ({ rating }) => {
     );
 };
 
-const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis }) => {
+const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis, githubUsername }) => {
   if (!analysis) {
     return <p className="text-center text-gray-400">No analysis data available.</p>;
   }
@@ -161,7 +162,7 @@ const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis }) => {
             <div className="space-y-4">
                 {analysis.topRepositories.map(repo => (
                 <a 
-                    href={repo.url || `https://github.com/search?q=${encodeURIComponent(repo.name)}&type=repositories`} 
+                    href={repo.url || (githubUsername ? `https://github.com/${githubUsername}/${repo.name}` : `https://github.com/search?q=${encodeURIComponent(repo.name)}&type=repositories`)} 
                     key={repo.name} 
                     target="_blank" 
                     rel="noopener noreferrer" 
