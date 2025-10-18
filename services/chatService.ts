@@ -198,23 +198,25 @@ function processMessagingCommands(userMessage: string, senderEmail: string, aiRe
 
     console.log('Processing message:', { recipientName, messageContent, senderEmail });
 
-    // Demo users mapping (excluding admin - no one sends messages to admin)
+    // Exact demo user mapping
     const demoUsers = [
       { name: 'Demo Candidate', email: 'candidate@testcredential.com' },
       { name: 'Demo Recruiter', email: 'recruiter@testcredential.com' }
     ];
 
-    // Find recipient - prioritize exact demo user matches first
-    let recipient = demoUsers.find(user => 
-      user.name.toLowerCase() === recipientName.toLowerCase()
-    );
+    // Find recipient with exact name matching first
+    let recipient = null;
     
-    // If no exact match, try partial matching with all users
-    if (!recipient) {
-      const allUsers = [...demoUsers, ...mockCandidates, ...mockRecruiters];
+    // Check for exact demo user matches first
+    if (recipientName.toLowerCase() === 'demo recruiter') {
+      recipient = { name: 'Demo Recruiter', email: 'recruiter@testcredential.com' };
+    } else if (recipientName.toLowerCase() === 'demo candidate') {
+      recipient = { name: 'Demo Candidate', email: 'candidate@testcredential.com' };
+    } else {
+      // For other candidates/recruiters, search in full lists
+      const allUsers = [...mockCandidates, ...mockRecruiters];
       recipient = allUsers.find(user =>
-        user.name.toLowerCase().includes(recipientName.toLowerCase()) ||
-        recipientName.toLowerCase().includes(user.name.toLowerCase()) ||
+        user.name.toLowerCase() === recipientName.toLowerCase() ||
         user.email === recipientName
       );
     }

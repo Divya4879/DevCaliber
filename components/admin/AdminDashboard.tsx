@@ -66,13 +66,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateToChat }) => 
                 </span>
               )}
             </button>
-            <button onClick={() => setActiveTab('messages')} className={tabClasses('messages')}>
-              Messages {unreadCount > 0 && (
-                <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs ml-2">
-                  {unreadCount}
-                </span>
-              )}
-            </button>
+            
         </div>
       </div>
       
