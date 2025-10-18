@@ -1,36 +1,42 @@
 # DevCaliber
 
-**AI-Powered Technical Talent Intelligence Platform**
+**An AI-Powered Technical Talent Intelligence Platform**
 
-DevCaliber revolutionizes technical hiring through advanced AI analysis of developer GitHub profiles, providing verified skill credentials and intelligent talent matching for modern recruitment.
+DevCaliber is a secure technical talent intelligence platform that transforms hiring through Auth0-secured AI agents, delivering
+authenticated GitHub ownership verification, AI-verified skill credentials, and role-based talent discovery for enterprise
+recruitment. It bridges the gap between authentic technical talent and skills-first recruiters.
 
 ## 🚀 Live Demo
 
 **Production Site:** [https://devcaliber.netlify.app](https://devcaliber.netlify.app)
 
+<img width="1920" height="2527" alt="devcaliber-landing page" src="https://github.com/user-attachments/assets/9851ffe0-a3a2-49eb-b958-7ba1dab9c37a" />
+
+
 ### Demo Accounts
-- **Admin:** `admin@testcredential.com`
-- **Recruiter:** `recruiter@testcredential.com` 
-- **Candidate:** `candidate@testcredential.com`
+- **Admin:** `admin@testcredential.com` password:`1234test*`
+- **Recruiter:** `recruiter@testcredential.com` password:`1234test*`
+- **Candidate:** `candidate@testcredential.com` password:`1234test*`
 
 ## ✨ Key Features
 
 ### For Developers
-- **AI GitHub Analysis** - Deep repository analysis with skill proficiency scoring
-- **Verified Skill Badges** - Blockchain-verifiable digital credentials
-- **Professional Profiles** - Comprehensive developer portfolios with quantified metrics
-- **Talent Pool Access** - Connect with verified recruiters and companies
+- Authenticated GitHub Analysis - AI analyzes your verified repositories with skill proficiency scoring and code quality assessment.
+- Verified Skill Credentials - Digital badges with timestamps based on actual code analysis, not self-reported skills.
+- Professional Profiles - Comprehensive developer portfolios with quantified GitHub metrics and project showcases.
+- Recruiter Discovery - Connect with verified, skills-focused recruiters who value talent over degrees.
 
 ### For Recruiters & Hiring Teams
-- **Pre-Vetted Talent Pool** - Access developers with AI-verified technical skills
-- **Advanced Filtering** - Search by technology stack, experience level, and location
-- **Skill Verification** - Confidence scores and detailed competency breakdowns
-- **Direct Messaging** - AI-powered communication with candidates
+- Pre-Vetted Talent Pool - Access candidates with AI-verified technical skills and authenticated GitHub profiles.
+- AI-Powered Talent Search - Role-restricted AI agent helps find candidates by actual coding abilities and project complexity.
+- Skill Verification Dashboard - Confidence scores, detailed competency breakdowns, and real code quality metrics.
+- Secure Direct Messaging - AI-facilitated communication with candidates through role-based access controls.
 
 ### For Administrators
-- **Recruiter Verification** - Manual approval workflow for hiring professionals
-- **Platform Analytics** - User engagement and skill distribution insights
-- **Quality Control** - Maintain high standards for both talent and recruiters
+- Recruiter Verification System - Manual approval workflow ensuring only legitimate hiring professionals access candidate data.
+- Platform Security Management - Complete oversight of AI agent interactions with comprehensive audit trails.
+- Quality Assurance - Maintain high standards for both talent verification and recruiter authenticity.
+- Unlimited AI Access - Full platform capabilities for user management and system administration.
 
 ## 🛠️ Technology Stack
 
@@ -45,7 +51,7 @@ DevCaliber revolutionizes technical hiring through advanced AI analysis of devel
 
 ```
 DevCaliber/
-├── components/           # React components
+├── components/          # React components
 │   ├── admin/           # Admin dashboard & verification
 │   ├── auth/            # Authentication flows
 │   ├── candidate/       # Developer profiles & analysis
@@ -68,13 +74,14 @@ DevCaliber/
 - GitHub OAuth App
 - Auth0 Account
 - Google Gemini API Key
+- OpenRouter Api Key
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/devcaliber.git
-   cd devcaliber
+   git clone https://github.com/Divya4879/DevCaliber.git
+   cd DevCaliber
    ```
 
 2. **Install dependencies**
@@ -111,6 +118,12 @@ DevCaliber/
    ```bash
    npm run build
    ```
+   
+7. **Deploy locally**
+   ```bash
+   npm run dev
+   ```
+   
 
 ## 🔧 Configuration
 
@@ -131,33 +144,42 @@ DevCaliber/
 ## 🎯 Core Workflows
 
 ### Developer Onboarding
-1. Sign up with Auth0
-2. Connect GitHub account
-3. AI analyzes repositories
-4. Receive verified skill badges
-5. Join talent pool
+1. Sign up with Auth0 (Email/Password or Google OAuth).
+2. Role Selection - Choose "Candidate" role (instant approval).
+3. GitHub Authentication - Connect and verify GitHub account ownership.
+4. AI Repository Analysis - Analyze coding patterns, project complexity, and documentation quality.
+5. Verified Skill Badges - Receive timestamped digital credentials based on actual code.
+6. Join Talent Pool - Profile becomes visible to verified recruiters.
 
 ### Recruiter Verification
-1. Sign up and request recruiter access
-2. Admin reviews and approves request
-3. Access verified candidate pool
-4. Use AI agent for candidate communication
+1. Sign up with Auth0 and select "Recruiter" role.
+2. LinkedIn Profile Required - Provide LinkedIn URL for verification.
+3. Admin Manual Review - Request sent to admin dashboard for approval.
+4. Waiting Period - Zero platform access until approved.
+5. Access Granted - View candidates and AI agent capabilities.
+6. Secure Messaging - Direct communication with candidates only.
 
 ### AI-Powered Messaging
-- Recruiters use chat agent: "Send message to Demo Candidate about their React skills"
-- Agent composes professional message
-- Automatic delivery to candidate dashboard
+- **Recruiters:** "Send message to Demo Candidate: Interview opportunity for React developer".
+- **AI Agent:** Validates recipient permissions and composes professional message.
+- **Automatic Delivery:** Message appears in candidate's dashboard with audit trail.
+- **Role Restrictions:** Candidates cannot send messages, only receive them.
 
 ## 📊 Features Overview
 
-| Feature | Candidates | Recruiters | Admins |
-|---------|------------|------------|--------|
-| GitHub Analysis | ✅ | ❌ | ✅ |
-| Skill Badges | ✅ | ❌ | ✅ |
-| Talent Pool | ✅ | ✅ | ✅ |
-| Messaging | Receive | Send | Send |
-| Verification | Auto | Manual | Approve |
-| AI Chat | ✅ | ✅ | ✅ |
+```
+| **Feature**         | **Candidates**             | **Recruiters**         | **Admins**                 |
+| ------------------- | -------------------------- | ---------------------- | ---------------------------|
+| **GitHub Analysis** | ✅ Own Profile Only         |  ✅ All Candidates     | ✅ All Profiles         |
+| **Skill Badges**    | ✅ Generate Verified Badges | 👀 View Only           | ✅ View All              |
+| **Talent Pool**     | 🌱 Join Verified Pool      | 🔍 View all Candidates  | 🧠 Complete Access        |
+| **Messaging**       | 📥 Receive Only            | 📤 Send to Candidates  | 💬 Send to Anyone         |
+| **Verification**    | ⚡ Auto-Approved          | ⏳ Await Manual Review  | ✅ Approve & Manage Users |
+| **AI Chat**         | 🤖 Career Guidance         | 🤖 Talent Search       | 🤖 Unlimited Agent Access  |
+| **Rate Limits**     | 50/session · 100/day       | 50/session · 100/day   | ♾️ Unlimited Usage          |
+| **Data Access**     | 🔒 Own Data Only           | 👁️ All Candidates Only | 🌍 Full Platform Visibility |
+
+```
 
 ## 🔒 Security
 
@@ -191,19 +213,6 @@ Set all `VITE_*` variables in your deployment platform's environment configurati
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
-
-- **Documentation:** [GitHub Wiki](https://github.com/yourusername/devcaliber/wiki)
-- **Issues:** [GitHub Issues](https://github.com/yourusername/devcaliber/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/devcaliber/discussions)
-
-## 🎉 Acknowledgments
-
-- Google Gemini for AI analysis capabilities
-- Auth0 for authentication infrastructure
-- Netlify for seamless deployment
-- GitHub for developer data access
-
 ---
 
-**Built with ❤️ for the developer community**
+**Built with ❤️ for the technicals- the hire and the hiring**
