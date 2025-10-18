@@ -4,6 +4,7 @@ import { CandidateProfile } from '../../types';
 import CandidateProfileDetail from './CandidateProfileDetail';
 import RecruiterRequestsTable from './RecruiterRequestsTable';
 import ChatBubble from '../chat/ChatBubble';
+import { MessagingService } from '../../services/messagingService';
 import { RecruiterRequestService } from '../../services/recruiterRequestService';
 import { useAuth } from '../../hooks/useAuth';
 
