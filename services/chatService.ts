@@ -234,7 +234,8 @@ function processMessagingCommands(userMessage: string, senderEmail: string, aiRe
       }
     } else {
       console.log('❌ Recipient not found:', recipientName);
-      console.log('Available users:', allUsers.map(u => ({ name: u.name, email: u.email })));
+      const availableUsers = [...mockCandidates, ...mockRecruiters];
+      console.log('Available users:', availableUsers.map(u => ({ name: u.name, email: u.email })));
       return `❌ **Recipient "${recipientName}" not found**\n\nAvailable candidates: ${mockCandidates.slice(0, 16).map(c => c.name).join(', ')}`;
     }
   }
