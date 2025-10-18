@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { mockCandidates, mockRecruiters } from '../../data/mockData';
 import { CandidateProfile } from '../../types';
 import CandidateProfileDetail from './CandidateProfileDetail';
-import MessagesPage from '../messages/MessagesPage';
 import RecruiterRequestsTable from './RecruiterRequestsTable';
 import ChatBubble from '../chat/ChatBubble';
-import { MessagingService } from '../../services/messagingService';
 import { RecruiterRequestService } from '../../services/recruiterRequestService';
 import { useAuth } from '../../hooks/useAuth';
 
-type Tab = 'candidates' | 'recruiters' | 'recruiter-requests' | 'messages';
+type Tab = 'candidates' | 'recruiters' | 'recruiter-requests';
 
 interface AdminDashboardProps {
   onNavigateToChat?: () => void;
