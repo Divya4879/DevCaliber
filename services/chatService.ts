@@ -207,11 +207,15 @@ function processMessagingCommands(userMessage: string, senderEmail: string, aiRe
     // Find recipient with exact name matching first
     let recipient = null;
     
+    console.log('Looking for recipient:', recipientName.toLowerCase());
+    
     // Check for exact demo user matches first
     if (recipientName.toLowerCase() === 'demo recruiter') {
       recipient = { name: 'Demo Recruiter', email: 'recruiter@testcredential.com' };
+      console.log('✅ Found Demo Recruiter');
     } else if (recipientName.toLowerCase() === 'demo candidate') {
       recipient = { name: 'Demo Candidate', email: 'candidate@testcredential.com' };
+      console.log('✅ Found Demo Candidate');
     } else {
       // For other candidates/recruiters, search in full lists
       const allUsers = [...mockCandidates, ...mockRecruiters];
@@ -219,9 +223,10 @@ function processMessagingCommands(userMessage: string, senderEmail: string, aiRe
         user.name.toLowerCase() === recipientName.toLowerCase() ||
         user.email === recipientName
       );
+      console.log('Searching in full user list, found:', recipient?.name);
     }
 
-    console.log('Found recipient:', recipient);
+    console.log('Final recipient:', recipient);
 
     if (recipient) {
       const success = MessagingService.sendMessage(senderEmail, recipient.email, messageContent);
