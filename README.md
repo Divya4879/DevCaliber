@@ -1,6 +1,6 @@
 # DevCaliber
 
-**An AI-Powered Technical Talent Intelligence Platform**
+**An AI-Powered Technical Talent Intelligence Hiring Platform**
 
 DevCaliber is a secure technical talent intelligence platform that transforms hiring through Auth0-secured AI agents, delivering
 authenticated GitHub ownership verification, AI-verified skill credentials, and role-based talent discovery for enterprise
@@ -8,7 +8,7 @@ recruitment. It bridges the gap between authentic technical talent and skills-fi
 
 ## 🚀 Live Demo
 
-**Production Site:** [https://devcaliber.netlify.app](https://devcaliber.netlify.app)
+**Production Site:** [DevCaliber](https://devcaliber.netlify.app)
 
 <img width="1920" height="2527" alt="devcaliber-landing page" src="https://github.com/user-attachments/assets/9851ffe0-a3a2-49eb-b958-7ba1dab9c37a" />
 
