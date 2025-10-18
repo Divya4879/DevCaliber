@@ -33,8 +33,8 @@ export const mockCandidates = [
       ],
       techStack: ['JavaScript', 'React', 'Node.js', 'TypeScript', 'HTML', 'CSS'],
       topRepositories: [
-        { name: 'demo-portfolio', justification: 'Personal portfolio showcasing React skills' },
-        { name: 'todo-app', justification: 'Full-stack application with Node.js backend' }
+        { name: 'demo-portfolio', url: 'https://github.com/demo-candidate/demo-portfolio', justification: 'Personal portfolio showcasing React skills' },
+        { name: 'todo-app', url: 'https://github.com/demo-candidate/todo-app', justification: 'Full-stack application with Node.js backend' }
       ],
       codeQuality: { rating: 7, justification: 'Clean code with good documentation practices' },
       projectComplexity: { rating: 6, justification: 'Moderate complexity projects with good structure' },
