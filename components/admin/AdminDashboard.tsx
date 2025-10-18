@@ -97,7 +97,16 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigateToChat }) => 
                         <tr key={candidate.id} className="hover:bg-slate-800/70">
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{candidate.name}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{candidate.email}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{candidate.githubUsername}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
+                            <a 
+                                href={`https://github.com/${candidate.githubUsername}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cyan-400 hover:text-cyan-300 underline"
+                            >
+                                {candidate.githubUsername}
+                            </a>
+                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 font-semibold text-center">{candidate.badges.length}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <button
