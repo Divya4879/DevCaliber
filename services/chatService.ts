@@ -189,12 +189,12 @@ You've reached your chat limit. Please try again in ${timeUntilReset}.
 }
 
 function processMessagingCommands(userMessage: string, senderEmail: string, aiResponse: string): string {
-  // Check if user is trying to send a message
-  const messageMatch = userMessage.match(/(?:send message to|message)\s+([^:]+?)(?::\s*(.+)|about\s+(.+)|saying\s+(.+)|\s+(.+))/i);
+  // Check if user is trying to send a message - fixed regex
+  const messageMatch = userMessage.match(/(?:send message to|message)\s+(.+?):\s*(.+)/i);
 
   if (messageMatch) {
     const recipientName = messageMatch[1].trim();
-    const messageContent = (messageMatch[2] || messageMatch[3] || messageMatch[4] || messageMatch[5] || '').trim();
+    const messageContent = messageMatch[2].trim();
 
     console.log('Processing message:', { recipientName, messageContent, senderEmail });
 
