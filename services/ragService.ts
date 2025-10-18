@@ -64,41 +64,26 @@ IMPORTANT: Only provide information about these specific recruiters. Do not crea
     }
 
     if (permissions.userRole === 'recruiter') {
-      const candidateList = candidates.map(c => {
-        const badgeDetails = c.badges?.map(b => `${b.skill} (${b.level}) - Issued: ${b.dateIssued}`).join('\n    ') || 'No badges';
-        const techStack = c.githubAnalysis?.techStack?.join(', ') || 'Not specified';
-        const topRepos = c.githubAnalysis?.topRepositories?.map(repo => `${repo.name}: ${repo.justification}`).join('\n    ') || 'No repositories';
-        
+      // Limit to exactly what's shown in dashboard - first 16 candidates only
+      const dashboardCandidates = candidates.slice(0, 16);
+      const candidateList = dashboardCandidates.map(c => {
         return `**${c.name}** (${c.email})
   📍 Location: ${c.location || 'Not specified'}
   💼 Experience: ${c.experience || 'Not specified'}
   🔗 GitHub: ${c.githubUsername}
-  📸 Profile Picture: ${c.profilePicture}
   
   **Skills & Proficiency:**
   ${c.skills?.map((skill, i) => `• ${skill}: ${c.proficiency?.[i] || 'Not specified'}`).join('\n  ') || 'No skills'}
   
-  **Verified Badges:**
-  ${badgeDetails}
-  
-  **Tech Stack:** ${techStack}
-  
-  **GitHub Analysis Summary:**
-  ${c.githubAnalysis?.summary || 'No analysis available'}
-  
-  **Top Repositories:**
-  ${topRepos}
-  
-  **Code Quality:** ${c.githubAnalysis?.codeQuality?.rating || 'N/A'}/10 - ${c.githubAnalysis?.codeQuality?.justification || 'No rating'}
-  
   ---`;
       }).join('\n\n');
       
-      return `Available Candidates (${candidates.length} total):
+      return `TALENT POOL - AVAILABLE CANDIDATES (${dashboardCandidates.length} total):
 
 ${candidateList}
 
-SCOPE: Complete candidate profiles with badges, GitHub analysis, and all visual data for hiring decisions.`;
+MESSAGING SCOPE: You can ONLY send messages to these ${dashboardCandidates.length} candidates listed above. 
+IMPORTANT: When sending messages, specify the exact candidate name from this list.`;
     }
 
     if (permissions.userRole === 'admin') {

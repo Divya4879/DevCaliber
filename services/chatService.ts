@@ -164,10 +164,10 @@ You've reached your chat limit. Please try again in ${timeUntilReset}.
       const aiResponse = geminiResponse.text();
       
       // Process messaging commands for Gemini response too
-      processMessagingCommands(messages[messages.length - 1]?.content || '', context.userEmail, aiResponse);
+      const finalResponse = processMessagingCommands(messages[messages.length - 1]?.content || '', context.userEmail, aiResponse);
       
       TokenVault.recordChatUsage(context.userEmail, context.userRole);
-      return aiResponse;
+      return finalResponse;
     }
 
     const data = await response.json();
@@ -175,12 +175,12 @@ You've reached your chat limit. Please try again in ${timeUntilReset}.
     
     // Process messaging commands
     const lastUserMessage = messages[messages.length - 1]?.content || '';
-    processMessagingCommands(lastUserMessage, context.userEmail, responseContent);
+    const finalResponse = processMessagingCommands(lastUserMessage, context.userEmail, responseContent);
     
     // Record usage after successful response
     TokenVault.recordChatUsage(context.userEmail, context.userRole);
     
-    return responseContent;
+    return finalResponse;
     
   } catch (error) {
     console.error('Chat service error:', error);
@@ -188,7 +188,7 @@ You've reached your chat limit. Please try again in ${timeUntilReset}.
   }
 }
 
-function processMessagingCommands(userMessage: string, senderEmail: string, aiResponse: string): void {
+function processMessagingCommands(userMessage: string, senderEmail: string, aiResponse: string): string {
   // Check if user is trying to send a message
   const messageMatch = userMessage.match(/(?:send message to|message)\s+([^:]+?)(?::\s*(.+)|about\s+(.+)|saying\s+(.+)|\s+(.+))/i);
 
@@ -221,12 +221,18 @@ function processMessagingCommands(userMessage: string, senderEmail: string, aiRe
       console.log('Message send result:', success);
       if (success) {
         console.log(`✅ Message sent from ${senderEmail} to ${recipient.email}: ${messageContent}`);
+        return `✅ **Message sent successfully to ${recipient.name}**\n\nMessage: "${messageContent}"\nRecipient: ${recipient.email}`;
+      } else {
+        return `❌ **Failed to send message to ${recipient.name}**\n\nPlease try again.`;
       }
     } else {
       console.log('❌ Recipient not found:', recipientName);
       console.log('Available users:', allUsers.map(u => ({ name: u.name, email: u.email })));
+      return `❌ **Recipient "${recipientName}" not found**\n\nAvailable candidates: ${mockCandidates.slice(0, 16).map(c => c.name).join(', ')}`;
     }
   }
+  
+  return aiResponse; // Return original AI response if no messaging command
 }
 
 function buildContextData(context: ChatContext): string {
