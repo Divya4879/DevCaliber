@@ -160,7 +160,13 @@ const AnalysisDisplay: React.FC<AnalysisDisplayProps> = ({ analysis }) => {
             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-cyan-400 mb-3">Top Repositories</h3>
             <div className="space-y-4">
                 {analysis.topRepositories.map(repo => (
-                <a href={repo.url} key={repo.name} target="_blank" rel="noopener noreferrer" className="block bg-slate-800/30 p-4 rounded-lg border border-cyan-800/50 hover:border-cyan-500 transition-colors">
+                <a 
+                    href={repo.url || `https://github.com/search?q=${encodeURIComponent(repo.name)}&type=repositories`} 
+                    key={repo.name} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block bg-slate-800/30 p-4 rounded-lg border border-cyan-800/50 hover:border-cyan-500 transition-colors"
+                >
                     <h4 className="font-bold text-cyan-400">{repo.name}</h4>
                     <div className="text-sm text-gray-400 leading-relaxed">
                       {formatText(repo.justification)}

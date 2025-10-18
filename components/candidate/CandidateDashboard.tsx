@@ -419,15 +419,16 @@ const CandidateDashboard: React.FC = () => {
                         <p className="font-semibold text-white">{badge.username}</p>
                         <div className="text-cyan-400 font-medium">
                           <span className="font-bold text-cyan-300">
-                            {badge.skill === 'JS' ? 'JavaScript' : 
-                             badge.skill === 'Typescript' ? 'TypeScript' :
-                             badge.skill === 'NodeJs' ? 'Node.js' : 
-                             badge.skill === 'FullStack' ? 'Full Stack' : 
-                             badge.skill === 'Frontend' ? 'Frontend Development' :
-                             badge.skill === 'Backend' ? 'Backend Development' :
-                             badge.skill === 'UI UX' ? 'UI/UX Design' : 
-                             badge.skill === 'WebAccessibility' ? 'Web Accessibility' : 
-                             badge.skill}
+                            {badge.skill === 'JS' || badge.skill === 'javascript' ? 'JavaScript' : 
+                             badge.skill === 'Typescript' || badge.skill === 'typescript' ? 'TypeScript' :
+                             badge.skill === 'NodeJs' || badge.skill === 'nodejs' ? 'Node.js' : 
+                             badge.skill === 'FullStack' || badge.skill === 'full stack' ? 'Full Stack' : 
+                             badge.skill === 'Frontend' || badge.skill === 'frontend' ? 'Frontend Development' :
+                             badge.skill === 'Backend' || badge.skill === 'backend' ? 'Backend Development' :
+                             badge.skill === 'UI UX' || badge.skill === 'ui/ux' ? 'UI/UX Design' : 
+                             badge.skill === 'WebAccessibility' ? 'Web Accessibility' :
+                             badge.skill === 'python' ? 'Python' :
+                             badge.skill.charAt(0).toUpperCase() + badge.skill.slice(1)}
                           </span>
                           <br />
                           <span className="font-bold text-cyan-300">{badge.proficiency}</span>
